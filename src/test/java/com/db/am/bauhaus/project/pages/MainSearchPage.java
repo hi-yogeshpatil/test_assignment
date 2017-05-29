@@ -16,8 +16,14 @@ public class MainSearchPage extends PageObject {
     @FindBy(id = "search-query")
     WebElementFacade inputBox;
 
-    @FindBy(css = ".btn.btn-orange.btn-append")
+    @FindBy(css = "button.btn.btn-primary")
     WebElementFacade searchButton;
+
+    @FindBy(id = "catnav-primary-link-1179")
+    WebElementFacade jewelleryMenu;
+
+    @FindBy(id = "catnav-l3-1180-link")
+    WebElementFacade ankletItem;
 
     public MainSearchPage(WebDriver driver) {
         super(driver);
@@ -28,11 +34,20 @@ public class MainSearchPage extends PageObject {
         searchButton.click();
     }
 
+    public void searchFromDropDownMenu(String menuTitle, String menuItem) {
+        jewelleryMenu.click();
+        ankletItem.click();
+    }
+
     public String getTopCategoriesHeader() {
         return find(By.cssSelector("h4.pb-xs-1-5")).getText();
     }
 
     public String getAllCategoriesHeader() {
         return find(By.cssSelector("h1.conform-heading.display-inline")).getText();
+    }
+
+    public String getItemHeader(){
+        return find(By.cssSelector(".float-left>h1")).getText();
     }
 }

@@ -15,10 +15,18 @@ public class SearchUser extends ScenarioSteps {
     MainSearchPage mainSearchPage;
 
     String searchText = "craft";
+    String menuTitle = "Jewellery";
+    String menuItem = "Anklets";
 
     @Step
     public void search_from_input_box() {
         mainSearchPage.searchFromInputBox(searchText);
+    }
+
+    @Step
+    public void search_from_drop_down_menu() {
+        mainSearchPage.searchFromDropDownMenu(menuTitle, menuItem);
+        searchText = menuItem;
     }
 
     @Step
@@ -29,5 +37,12 @@ public class SearchUser extends ScenarioSteps {
     @Step
     public void verify_result_for_all_categories() {
         assertThat(mainSearchPage.getAllCategoriesHeader(), containsString(searchText));
+    }
+
+    //TODO: This HAS to be generic function which accepts the string which
+    // needs to be searched amongst all menus and sub-menus
+    @Step
+    public void verify_result_for_drop_down_search () {
+        assertThat(mainSearchPage.getItemHeader(), containsString(menuItem));
     }
 }

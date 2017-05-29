@@ -56,6 +56,11 @@ public class SearchSteps {
         theActorInTheSpotlight().attemptsTo(SearchFor.randomText());
     }
 
+    @When("^he searches for a product from the drop-down menu$")
+    public void search_from_drop_down_menu() {
+        user.search_from_drop_down_menu();
+    }
+
     @Then("^the result should be displayed$")
     public void verify_search_result() {
         user.verify_result_for_top_categories();
@@ -70,4 +75,10 @@ public class SearchSteps {
                 seeThat("the all categories header ", the(SearchTarget.ALL_CATEGORIES_HEADER), containsText(searchText))
         );
     }
+
+    @Then("^the drop down search result should be displayed$")
+    public void verify_drop_down_search_result() {
+        user.verify_result_for_drop_down_search();
+    }
+
 }
