@@ -30,6 +30,12 @@ public class SearchUser extends ScenarioSteps {
     }
 
     @Step
+    public void search_by_clicking_icons() {
+        mainSearchPage.searchByClickingIcons(menuTitle);
+        searchText = "jewellery";
+    }
+
+    @Step
     public void verify_result_for_top_categories() {
         assertThat(mainSearchPage.getTopCategoriesHeader(), containsString(searchText));
     }
@@ -45,4 +51,10 @@ public class SearchUser extends ScenarioSteps {
     public void verify_result_for_drop_down_search () {
         assertThat(mainSearchPage.getItemHeader(), containsString(menuItem));
     }
+
+    @Step
+    public void verify_result_for_icon_click_search () {
+        assertThat(mainSearchPage.getPageTitle(), containsString(searchText));
+    }
+
 }

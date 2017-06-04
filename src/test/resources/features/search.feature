@@ -21,7 +21,8 @@ Feature: Sample
     # Options are pass parameters in keyword if supported or have overwritten methods
     Then the drop down search result should be displayed
 
-  @ui @wip
+  @ui @icons
   Scenario: Should be able to search for a product from the icons
-
-
+    Given John is viewing the Etsy landing page
+    When he searches for a product from the icons
+    Then the icon based search results should be displayed

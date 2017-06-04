@@ -1,5 +1,6 @@
 package com.db.am.bauhaus.project.pages;
 
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -25,6 +26,12 @@ public class MainSearchPage extends PageObject {
     @FindBy(id = "catnav-l3-1180-link")
     WebElementFacade ankletItem;
 
+    @FindBy(xpath = "./html/body/div[6]/div/div/span[2]/div/div/div/div[2]/a/div[1]")
+    WebElementFacade jewelleryIcon;
+
+    @FindBy(css = "div.pt-xs-1.text-gray-lighter")
+    WebElementFacade PageTitleText;
+
     public MainSearchPage(WebDriver driver) {
         super(driver);
     }
@@ -39,6 +46,10 @@ public class MainSearchPage extends PageObject {
         ankletItem.click();
     }
 
+    public void searchByClickingIcons(String menuTitle) {
+        jewelleryIcon.waitUntilPresent().click();
+    }
+
     public String getTopCategoriesHeader() {
         return find(By.cssSelector("h4.pb-xs-1-5")).getText();
     }
@@ -47,7 +58,7 @@ public class MainSearchPage extends PageObject {
         return find(By.cssSelector("h1.conform-heading.display-inline")).getText();
     }
 
-    public String getItemHeader(){
-        return find(By.cssSelector(".float-left>h1")).getText();
-    }
+    public String getItemHeader(){return find(By.cssSelector(".float-left>h1")).getText();}
+
+    public String getPageTitle(){return PageTitleText.waitUntilPresent().getText(); }
 }

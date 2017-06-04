@@ -61,6 +61,11 @@ public class SearchSteps {
         user.search_from_drop_down_menu();
     }
 
+    @When("^he searches for a product from the icons$")
+    public void search_by_clicking_icons() {
+        user.search_by_clicking_icons();
+    }
+
     @Then("^the result should be displayed$")
     public void verify_search_result() {
         user.verify_result_for_top_categories();
@@ -79,6 +84,10 @@ public class SearchSteps {
     @Then("^the drop down search result should be displayed$")
     public void verify_drop_down_search_result() {
         user.verify_result_for_drop_down_search();
+    }
+
+    @Then("^the icon based search results should be displayed$")
+    public void verify_icon_click_search_result() { user.verify_result_for_icon_click_search();
     }
 
 }
